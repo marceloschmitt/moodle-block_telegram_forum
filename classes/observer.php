@@ -25,30 +25,29 @@ class block_telegram_forum_observer {
      */
     public static function discussion_created(\mod_forum\event\discussion_created $event) {
         global $DB, $CFG;
-        if(!$DB->record_exists('block_telegram_forum', array('courseid' => $event->courseid))) {
-		return true;
-	} else {
-		$telegram = $DB->get_record('block_telegram_forum', ['courseid' => $event->courseid]);
-		$botToken=get_config('block_telegram_forum', 'token');
-	error_log($botToken);
-  		$website="https://api.telegram.org/bot".$botToken;
-  		$chatId=$telegram->channel; 
-		$discussion = $DB->get_record($event->objecttable, ['id' => $event->objectid]);
-		$post = $DB->get_record('forum_posts', ['discussion' => $discussion->id]);
-		$text = 'Tópico: ' . $post->subject . ' - Mensagem: ' . strip_tags($post->message);
-  		$params=[
-      			'chat_id'=>$chatId, 
-      			'text'=> $text,
-  			];
-  		$ch = curl_init($website . '/sendMessage');
-  		curl_setopt($ch, CURLOPT_HEADER, false);
-  		curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-  		curl_setopt($ch, CURLOPT_POST, 1);
-  		curl_setopt($ch, CURLOPT_POSTFIELDS, ($params));
-  		curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-  		$result = curl_exec($ch);
-  		curl_close($ch);
-		return true;
-	}	
+        if (!$DB->record_exists('block_telegram_forum', array('courseid' => $event->courseid))) {
+            return true;
+        } else {
+            $telegram = $DB->get_record('block_telegram_forum', ['courseid' => $event->courseid]);
+            $bottoken = get_config('block_telegram_forum', 'token');
+            $website = "https://api.telegram.org/bot".$bottoken;
+            $chatid = $telegram->channel;
+            $discussion = $DB->get_record($event->objecttable, ['id' => $event->objectid]);
+            $post = $DB->get_record('forum_posts', ['discussion' => $discussion->id]);
+            $text = 'Tópico: ' . $post->subject . ' - Mensagem: ' . strip_tags($post->message);
+            $params = [
+                'chat_id' => $chatid,
+                'text' => $text,
+            ];
+            $ch = curl_init($website . '/sendMessage');
+            curl_setopt($ch, CURLOPT_HEADER, false);
+            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+            curl_setopt($ch, CURLOPT_POST, 1);
+            curl_setopt($ch, CURLOPT_POSTFIELDS, ($params));
+            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+            $result = curl_exec($ch);
+            curl_close($ch);
+            return true;
+        }
     }
 }
