@@ -26,7 +26,7 @@
 class block_telegram_forum extends block_base {
 
     public function init() {
-        $this->title = get_string('simplehtml', 'block_telegram_forum');
+        $this->title = get_string('telegram_forum', 'block_telegram_forum');
     }
 
     public function get_content() {
@@ -35,10 +35,10 @@ class block_telegram_forum extends block_base {
         }
         $this->content = new stdClass;
         if (empty($this->config->channelid)) {
-            $this->content->text   = 'Canal não configurado! Ative a edição da disciplina e configure este bloco.';
+            $this->content->text = get_string('notconfigured', 'block_telegram_forum');
         } else {
             $this->content->text = "<a href='{$this->config->channellink}'
-                target='_blank'>Registre-se no canal Telegram desta página</a>";
+                target='_blank'>".  get_string('register', 'block_telegram_forum') . "</a>";
         }
         return $this->content;
     }
@@ -48,9 +48,9 @@ class block_telegram_forum extends block_base {
         global $DB;
         global $COURSE;
         if (!empty($data->channelid)) {
-            if ($DB->record_exists('block_telegram_forum', array('courseid' => $COURSE->id))) {
-                $sql = "update mdl_block_telegram_forum set channel = $data->channelid where courseid = $COURSE->id";
-                $DB->execute($sql);
+            if ($record = $DB->get_record('block_telegram_forum', array('courseid' => $COURSE->id))) {
+                $record->channelid = $data->channelid;
+                $DB->update_record('block_telegram_forum', $record);
             } else {
                 $ins = (object)array('courseid' => $COURSE->id, 'channel' => $data->channelid);
                 $DB->insert_record('block_telegram_forum', $ins);

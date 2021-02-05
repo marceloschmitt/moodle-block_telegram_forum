@@ -22,18 +22,26 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  **/
 
-defined('MOODLE_INTERNAL') || die();
+$string['pluginname'] = 'Telegram and Forum Integration';
+$string['telegram_forum'] = 'Telegram/Forum';
+$string['telegram_forum:addinstance'] = 'Add block Telegram/Forum';
+$string['telegram_forum:myaddinstance'] = 'Addd block Telegram/Forum into My Moodle page';
 
-$string['pluginname'] = 'telegram_forum';
-$string['simplehtml'] = 'Telegram/Fórum';
-$string['simplehtml:addinstance'] = 'Adiciona bloco telegram_forum';
-$string['simplehtml:myaddinstance'] = 'Adiciona bloco telegram_forum para My Moodle page';
+$string['headerconfig'] = 'Telegram/Forum block configuration';
+$string['descconfig'] = 'In order to use Telegram to send new topics in courses it is necessary to configure the token and the name of the Telegram bot used by the organization.';
+$string['tokenconfig'] = 'Bot Token';
+$string['botconfig'] = 'Bot Name';
 
-$string['headerconfig'] = 'Configuração do Bloco Telegram/Fórum';
-$string['descconfig'] = 'Para que os professores possam utilizar o Telegram para enviarem seus tópicos criados em fóruns, é preciso configurar o token e o nome do bot utilizado pela instituição.';
-$string['tokenconfig'] = 'Token';
-$string['botconfig'] = 'Bot da instituição';
+$string['channelid'] = 'Channel id';
+$string['channellink'] = 'Channel link';
+$string['channelname'] = 'Channel name';
 
-$string['channelid'] = 'Id do canal';
-$string['channellink'] = 'Link para o canal';
-$string['channelname'] = 'Nome do canal';
+$string['notconfigured'] = 'Channel not configured! Activate edit and configure the block.';
+$string['register'] = 'Register in the course Telegram channel.';
+$string['instructions'] = '1. Create a private channel in Telegram;  <BR>
+                           2. Add ' . get_config('block_telegram_forum', 'bot') .
+                            ' as administrator of the channel; <BR>
+                           3. Discover and copy the channel id; <BR>
+                           4. Paste the channel id in the proper field; <BR>
+                           5. Fill the channel link used for subscription.';
+$string['instructionstitle'] = 'Instructions';
