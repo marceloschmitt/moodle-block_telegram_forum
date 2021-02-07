@@ -47,3 +47,5 @@ $string['instructions'] = '1. Crie um canal no seu telegram;  <BR>
                            4. Cole o id do canal no campo abaixo; <BR>
                            5. Preencha o link para inscrição no canal no segundo campo.';
 $string['instructionstitle'] = 'Instruções';
+
+$string['privacy:metadata'] = 'The Calendar block only displays existing calendar data.';

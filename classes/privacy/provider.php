@@ -14,19 +14,19 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-/**
- * Classes to enforce the various access rules that can apply to a activity.
- *
- * @package    block_telegram_forum
- * @copyright  2021 Marcelo Augusto Rauh Schmitt
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- **/
+namespace block_calendar_month\privacy;
 
-defined('MOODLE_INTERNAL') || die();
+class provider implements
+    // This plugin does not store any personal user data.
+    \core_privacy\local\metadata\null_provider {
 
-$plugin->component = 'block_telegram_forum';  // Recommended since 2.0.2 (MDL-26035). Required since 3.0 (MDL-48494).
-$plugin->version = 2021020701;  // YYYYMMDDHH (year, month, day, 24-hr time).
-$plugin->supported = [39, 40];
-$plugin->requires = 2019111800;
-$plugin->maturity = MATURITY_RC;
-$plugin->release = 'v1.0';
+    /**
+     * Get the language string identifier with the component's language
+     * file to explain why this plugin stores no data.
+     *
+     * @return  string
+     */
+    public static function get_reason() : string {
+        return 'privacy:metadata';
+    }
+}

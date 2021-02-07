@@ -45,3 +45,5 @@ $string['instructions'] = '1. Create a private channel in Telegram;  <BR>
                            4. Paste the channel id in the proper field; <BR>
                            5. Fill the channel link used for subscription.';
 $string['instructionstitle'] = 'Instructions';
+
+$string['privacy:metadata'] = 'The Telegram/Forum block only sends messagens to yourconfigured Telegram Channel.';
