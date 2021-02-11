@@ -49,7 +49,7 @@ class block_telegram_forum extends block_base {
         global $COURSE;
         if (!empty($data->channelid)) {
             if ($record = $DB->get_record('block_telegram_forum', array('courseid' => $COURSE->id))) {
-                $record->channelid = $data->channelid;
+                $record->channel = $data->channelid;
                 $DB->update_record('block_telegram_forum', $record);
             } else {
                 $ins = (object)array('courseid' => $COURSE->id, 'channel' => $data->channelid);
