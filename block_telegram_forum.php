@@ -44,12 +44,6 @@ class block_telegram_forum extends block_base {
     }
 
 
-    public function instance_delete() {
-        global $DB;
-        $DB->delete_records('block_telegram_forum', array('courseid' => $COURSE->id));
-    }
-
-
     public function has_config() {
         return true;
     }
