@@ -43,7 +43,7 @@ class block_telegram_forum extends block_base {
         return $this->content;
     }
 
-
+/*
     public function instance_config_save($data, $nolongerused = false) {
         global $DB;
         global $COURSE;
@@ -58,11 +58,9 @@ class block_telegram_forum extends block_base {
         } else {
                 $DB->delete_records('block_telegram_forum', array('courseid' => $COURSE->id));
         }
-        foreach($data->forum as $x => $y)
-            error_log($x . "  " . $y);
         parent::instance_config_save($data);
     }
-
+*/
 
     public function instance_delete() {
         global $DB;

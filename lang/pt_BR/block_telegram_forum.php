@@ -37,6 +37,7 @@ $string['botconfig'] = 'Bot da instituição';
 $string['channelid'] = 'Id do canal';
 $string['channellink'] = 'Link para o canal';
 $string['channelname'] = 'Nome do canal';
+$string['forums'] = 'Selecione os fóruns';
 
 $string['notconfigured'] = 'Canal não configurado! Ative a edição da disciplina e configure este bloco.';
 $string['register'] = 'Registre-se no canal Telegram desta página';
