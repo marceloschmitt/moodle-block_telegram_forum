@@ -33,8 +33,6 @@ class block_telegram_forum_observer {
      */
     public static function discussion_created(\mod_forum\event\discussion_created $event) {
         global $DB, $CFG;
-        foreach ($event as $x => $y)
-            error_log($x . "- ". $y);
         $context = context_course::instance($event->courseid);
         $instance = $DB->get_record('block_instances',
                         array('parentcontextid' => $context->id, 'blockname' => 'telegram_forum'));
@@ -44,7 +42,6 @@ class block_telegram_forum_observer {
             $blockname = 'telegram_forum';
             $block = block_instance($blockname, $instance);
             if (!isset($block->config->forum[$event->contextinstanceid])) {
-                    error_log("nao enviou");
                     return true;
             }
             $telegram = $DB->get_record('block_telegram_forum', ['courseid' => $event->courseid]);

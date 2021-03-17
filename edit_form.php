@@ -40,6 +40,8 @@ class block_telegram_forum_edit_form extends block_edit_form {
         $mform->addElement('text', 'config_channellink', get_string('channellink', 'block_telegram_forum'));
         $mform->setType('config_channellink', PARAM_RAW);
 
+        $mform->addElement('static', 'description', get_string('forums', 'block_telegram_forum'));
+
         $foruns = $DB->get_records('forum', ['course' => $COURSE->id], $sort='name', $fields='id, name');
         foreach ($foruns as $forum) {
             $module = $DB->get_record('course_modules', ['instance' => $forum->id, 'course' => $COURSE->id], $fields='id');
