@@ -27,7 +27,7 @@ defined('MOODLE_INTERNAL') || die();
 class block_telegram_forum_edit_form extends block_edit_form {
 
     protected function specific_definition($mform) {
-
+        global $DB, $COURSE;
         // Section header title according to language file.
         $mform->addElement('header', 'config_header', get_string('blocksettings', 'block'));
 
@@ -42,7 +42,7 @@ class block_telegram_forum_edit_form extends block_edit_form {
 
         $foruns = $DB->get_records('forum', ['course' => $COURSE->id], $sort='name', $fields='id, name');
         foreach ($foruns as $forum) {
-            $module = $DB->get_record('course_modules', ['instance' => $forum->id], $fields='id');
+            $module = $DB->get_record('course_modules', ['instance' => $forum->id, 'course' => $COURSE->id], $fields='id');
             $mform->addElement('checkbox', "config_forum[$module->id]", null, $forum->name);
         }
 

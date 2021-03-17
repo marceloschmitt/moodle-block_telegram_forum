@@ -43,8 +43,10 @@ class block_telegram_forum_observer {
         } else {
             $blockname = 'telegram_forum';
             $block = block_instance($blockname, $instance);
-            foreach($block->config as $x=>$y)
-                error_log($x);
+            if (!isset($block->config->forum[$event->contextinstanceid])) {
+                    error_log("nao enviou");
+                    return true;
+            }
             $telegram = $DB->get_record('block_telegram_forum', ['courseid' => $event->courseid]);
             $bottoken = get_config('block_telegram_forum', 'token');
             $website = "https://api.telegram.org/bot".$bottoken;
