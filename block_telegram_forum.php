@@ -43,24 +43,6 @@ class block_telegram_forum extends block_base {
         return $this->content;
     }
 
-/*
-    public function instance_config_save($data, $nolongerused = false) {
-        global $DB;
-        global $COURSE;
-        if (!empty($data->channelid)) {
-            if ($record = $DB->get_record('block_telegram_forum', array('courseid' => $COURSE->id))) {
-                $record->channel = $data->channelid;
-                $DB->update_record('block_telegram_forum', $record);
-            } else {
-                $ins = (object)array('courseid' => $COURSE->id, 'channel' => $data->channelid);
-                $DB->insert_record('block_telegram_forum', $ins);
-            }
-        } else {
-                $DB->delete_records('block_telegram_forum', array('courseid' => $COURSE->id));
-        }
-        parent::instance_config_save($data);
-    }
-*/
 
     public function instance_delete() {
         global $DB;

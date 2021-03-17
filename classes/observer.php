@@ -44,7 +44,6 @@ class block_telegram_forum_observer {
             if (!isset($block->config->forum[$event->contextinstanceid])) {
                     return true;
             }
-            $telegram = $DB->get_record('block_telegram_forum', ['courseid' => $event->courseid]);
             $bottoken = get_config('block_telegram_forum', 'token');
             $website = "https://api.telegram.org/bot".$bottoken;
             $chatid = $block->config->channelid;
