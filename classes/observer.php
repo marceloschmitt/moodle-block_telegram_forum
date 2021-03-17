@@ -33,13 +33,22 @@ class block_telegram_forum_observer {
      */
     public static function discussion_created(\mod_forum\event\discussion_created $event) {
         global $DB, $CFG;
-        if (!$DB->record_exists('block_telegram_forum', array('courseid' => $event->courseid))) {
+        foreach ($event as $x => $y)
+            error_log($x . "- ". $y);
+        $context = context_course::instance($event->courseid);
+        $instance = $DB->get_record('block_instances',
+                        array('parentcontextid' => $context->id, 'blockname' => 'telegram_forum'));
+        if (!$instance) {
             return true;
         } else {
+            $blockname = 'telegram_forum';
+            $block = block_instance($blockname, $instance);
+            foreach($block->config as $x=>$y)
+                error_log($x);
             $telegram = $DB->get_record('block_telegram_forum', ['courseid' => $event->courseid]);
             $bottoken = get_config('block_telegram_forum', 'token');
             $website = "https://api.telegram.org/bot".$bottoken;
-            $chatid = $telegram->channel;
+            $chatid = $block->config->channelid;
             $discussion = $DB->get_record($event->objecttable, ['id' => $event->objectid]);
             $post = $DB->get_record('forum_posts', ['discussion' => $discussion->id]);
             $text = 'Tópico: ' . $post->subject . ' - Mensagem: ' . strip_tags($post->message);

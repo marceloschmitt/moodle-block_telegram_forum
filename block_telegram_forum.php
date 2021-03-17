@@ -58,6 +58,8 @@ class block_telegram_forum extends block_base {
         } else {
                 $DB->delete_records('block_telegram_forum', array('courseid' => $COURSE->id));
         }
+        foreach($data->forum as $x => $y)
+            error_log($x . "  " . $y);
         parent::instance_config_save($data);
     }
 
