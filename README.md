@@ -10,7 +10,8 @@ INSTALLATION WITH GIT
   - Create a Telegram account for the organization where Moodle is installed or use its own (https://telegram.org or download Telegram APP in cell phone).
   - Create a Telegram Bot and take note of its token and its name  (https://core.telegram.org/bots, item 6).
   - Set the Token of Telegram bot created for the organization.
-  - Set the name of Telegram bot created for the organization
+  - Set the name of Telegram bot created for the organization.
+  - Select the kind of message that should be sent for each forum (topic creation / message inside topic).
 
 4) Voilá. Now each teacher that wants to integrate ther course foruns with Telegram must configure in each course:
   - Teacher enables telegram block in the desired course.
