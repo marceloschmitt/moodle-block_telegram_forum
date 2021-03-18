@@ -41,10 +41,10 @@ class block_telegram_forum_observer {
         } else {
             $blockname = 'telegram_forum';
             $block = block_instance($blockname, $instance);
-            if (!isset($block->config->forum[$event->contextinstanceid]) &&
-                !isset($block->config->forummessage[$event->contextinstanceid])) {
+            if (!isset($block->config->forum[$event->contextinstanceid]) {
                 return true;
             }
+            $bottoken = get_config('block_telegram_forum', 'token');
             $discussion = $DB->get_record($event->objecttable, ['id' => $event->objectid]);
             $post = $DB->get_record('forum_posts', ['discussion' => $discussion->id]);
             $text = $post->subject . PHP_EOL . strip_tags($post->message);

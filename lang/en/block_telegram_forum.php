@@ -36,6 +36,8 @@ $string['channelid'] = 'Channel id';
 $string['channellink'] = 'Channel link';
 $string['channelname'] = 'Channel name';
 $string['forums'] = 'Select forums';
+$string['topic'] = 'Send new topics';
+$string['message'] = 'Send new messages';
 
 $string['notconfigured'] = 'Channel not configured! Activate edit and configure the block.';
 $string['register'] = 'Register in the course Telegram channel.';
