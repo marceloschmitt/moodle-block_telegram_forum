@@ -41,28 +41,58 @@ class block_telegram_forum_observer {
         } else {
             $blockname = 'telegram_forum';
             $block = block_instance($blockname, $instance);
+            if (!isset($block->config->forum[$event->contextinstanceid]) &&
+                !isset($block->config->forummessage[$event->contextinstanceid])) {
+                return true;
+            }
+            $discussion = $DB->get_record($event->objecttable, ['id' => $event->objectid]);
+            $post = $DB->get_record('forum_posts', ['discussion' => $discussion->id]);
+            $text = $post->subject . PHP_EOL . strip_tags($post->message);
+            block_telegram_forum_observer::send_telegram_message($bottoken,$block->config->channelid, $text);
+            return true;
+        }
+    }
+
+
+        public static function discussion_created(\mod_forum\event\post_created $event) {
+        global $DB, $CFG;
+        $context = context_course::instance($event->courseid);
+        $instance = $DB->get_record('block_instances',
+                        array('parentcontextid' => $context->id, 'blockname' => 'telegram_forum'));
+        if (!$instance) {
+            return true;
+        } else {
+            $blockname = 'telegram_forum';
+            $block = block_instance($blockname, $instance);
             if (!isset($block->config->forum[$event->contextinstanceid])) {
                     return true;
             }
             $bottoken = get_config('block_telegram_forum', 'token');
-            $website = "https://api.telegram.org/bot".$bottoken;
-            $chatid = $block->config->channelid;
             $discussion = $DB->get_record($event->objecttable, ['id' => $event->objectid]);
-            $post = $DB->get_record('forum_posts', ['discussion' => $discussion->id]);
-            $text = 'Tópico: ' . $post->subject . ' - Mensagem: ' . strip_tags($post->message);
-            $params = [
-                'chat_id' => $chatid,
-                'text' => $text,
-            ];
-            $ch = curl_init($website . '/sendMessage');
-            curl_setopt($ch, CURLOPT_HEADER, false);
-            curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
-            curl_setopt($ch, CURLOPT_POST, 1);
-            curl_setopt($ch, CURLOPT_POSTFIELDS, ($params));
-            curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
-            $result = curl_exec($ch);
-            curl_close($ch);
+            $post = $DB->get_record('forum_posts', ['id' => $discussion->id]);
+            $text = $post->subject . PHP_EOL . strip_tags($post->message);
+            block_telegram_forum_observer::send_telegram_message($bottoken,$block->config->channelid, $text);
             return true;
         }
     }
+
+
+    public static function send_telegram_message($bottoken, $channelid, $text) {
+        global $DB;
+        $website = "https://api.telegram.org/bot".$bottoken;
+        $params = [
+            'chat_id' => $channelid,
+            'text' => $text,
+        ];
+        $ch = curl_init($website . '/sendMessage');
+        curl_setopt($ch, CURLOPT_HEADER, false);
+        curl_setopt($ch, CURLOPT_RETURNTRANSFER, 1);
+        curl_setopt($ch, CURLOPT_POST, 1);
+        curl_setopt($ch, CURLOPT_POSTFIELDS, ($params));
+        curl_setopt($ch, CURLOPT_SSL_VERIFYPEER, false);
+        $result = curl_exec($ch);
+        curl_close($ch);
+        return true;
+    }
+
 }
