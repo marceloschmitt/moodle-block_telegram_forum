@@ -54,7 +54,7 @@ class block_telegram_forum_observer {
     }
 
 
-        public static function discussion_created(\mod_forum\event\post_created $event) {
+        public static function post_created(\mod_forum\event\post_created $event) {
         global $DB, $CFG;
         $context = context_course::instance($event->courseid);
         $instance = $DB->get_record('block_instances',
