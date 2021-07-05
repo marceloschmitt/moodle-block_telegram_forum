@@ -28,6 +28,7 @@ class block_telegram_forum_edit_form extends block_edit_form {
 
     protected function specific_definition($mform) {
         global $DB, $COURSE;
+
         // Section header title according to language file.
         $mform->addElement('header', 'config_header', get_string('blocksettings', 'block'));
 
@@ -35,10 +36,10 @@ class block_telegram_forum_edit_form extends block_edit_form {
             get_string('instructions', 'block_telegram_forum', get_config('block_telegram_forum', 'bot')));
 
         $mform->addElement('text', 'config_channelid', get_string('channelid', 'block_telegram_forum'));
-        $mform->setType('config_channelid', PARAM_RAW);
+        $mform->setType('config_channelid', PARAM_ALPHANUMEXT);
 
         $mform->addElement('text', 'config_channellink', get_string('channellink', 'block_telegram_forum'));
-        $mform->setType('config_channellink', PARAM_RAW);
+        $mform->setType('config_channellink', PARAM_TEXT);
 
         $mform->addElement('static', 'description', get_string('forums', 'block_telegram_forum'));
 
