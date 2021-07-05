@@ -32,7 +32,7 @@ class block_telegram_forum_edit_form extends block_edit_form {
         $mform->addElement('header', 'config_header', get_string('blocksettings', 'block'));
 
         $mform->addElement('static', 'description', get_string('instructionstitle', 'block_telegram_forum'),
-            get_string('instructions', 'block_telegram_forum'));
+            get_string('instructions', 'block_telegram_forum', get_config('block_telegram_forum', 'bot')));
 
         $mform->addElement('text', 'config_channelid', get_string('channelid', 'block_telegram_forum'));
         $mform->setType('config_channelid', PARAM_RAW);
