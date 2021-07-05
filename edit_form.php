@@ -43,19 +43,19 @@ class block_telegram_forum_edit_form extends block_edit_form {
 
         $mform->addElement('static', 'description', get_string('forums', 'block_telegram_forum'));
 
-        $foruns = $DB->get_records('forum', ['course' => $COURSE->id], $sort='name', $fields='id, name');
+        $foruns = $DB->get_records('forum', ['course' => $COURSE->id], $sort = 'name', $fields = 'id, name');
         $groupid = 0;
         foreach ($foruns as $forum) {
             $checkarray = array();
-            $module = $DB->get_record('course_modules', ['instance' => $forum->id, 'course' => $COURSE->id], $fields='id');
+            $module = $DB->get_record('course_modules', ['instance' => $forum->id, 'course' => $COURSE->id], $fields = 'id');
             $checkarray[] =& $mform->createElement('checkbox', "config_forum[$module->id]", null,
                 get_string('topic', 'block_telegram_forum'));
             $checkarray[] =& $mform->createElement('checkbox', "config_forummessage[$module->id]", null,
                 get_string('message', 'block_telegram_forum'));
             $mform->addGroup($checkarray, 'checkar', $forum->name, array('&nbsp;&nbsp;&nbsp;'), false);
         }
-        $mform->addElement('hidden','config_forum[0]',null);
-        $mform->addElement('hidden','config_forummessage[0]',null);
+        $mform->addElement('hidden', 'config_forum[0]', null);
+        $mform->addElement('hidden', 'config_forummessage[0]', null);
 
     }
 }

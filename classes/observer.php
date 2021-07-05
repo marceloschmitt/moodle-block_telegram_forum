@@ -48,13 +48,13 @@ class block_telegram_forum_observer {
             $discussion = $DB->get_record($event->objecttable, ['id' => $event->objectid]);
             $post = $DB->get_record('forum_posts', ['discussion' => $discussion->id]);
             $text = $post->subject . PHP_EOL . strip_tags($post->message);
-            block_telegram_forum_observer::send_telegram_message($bottoken,$block->config->channelid, $text);
+            self::send_telegram_message($bottoken, $block->config->channelid, $text);
             return true;
         }
     }
 
 
-        public static function post_created(\mod_forum\event\post_created $event) {
+    public static function post_created(\mod_forum\event\post_created $event) {
         global $DB, $CFG;
         $context = context_course::instance($event->courseid);
         $instance = $DB->get_record('block_instances',
@@ -71,7 +71,7 @@ class block_telegram_forum_observer {
             $discussion = $DB->get_record($event->objecttable, ['id' => $event->objectid]);
             $post = $DB->get_record('forum_posts', ['id' => $discussion->id]);
             $text = $post->subject . PHP_EOL . strip_tags($post->message);
-            block_telegram_forum_observer::send_telegram_message($bottoken,$block->config->channelid, $text);
+            self::send_telegram_message($bottoken,$block->config->channelid, $text);
             return true;
         }
     }
