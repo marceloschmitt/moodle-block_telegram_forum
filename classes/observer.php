@@ -71,7 +71,7 @@ class block_telegram_forum_observer {
             $discussion = $DB->get_record($event->objecttable, ['id' => $event->objectid]);
             $post = $DB->get_record('forum_posts', ['id' => $discussion->id]);
             $text = $post->subject . PHP_EOL . strip_tags($post->message);
-            self::send_telegram_message($bottoken,$block->config->channelid, $text);
+            self::send_telegram_message($bottoken, $block->config->channelid, $text);
             return true;
         }
     }
