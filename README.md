@@ -27,4 +27,5 @@ INSTALLATION WITH GIT
         It's important to know that channel's IDs are always negative and 13 characters long!
         So add -100 to it, making the correct ID -1001018013852.
  - Teacher sets the channel link in the block so that students can register.
+ - Teacher adds the bot as an admin of the Private Channel.
 
