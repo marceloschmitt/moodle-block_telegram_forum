@@ -22,8 +22,6 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  **/
 
-defined('MOODLE_INTERNAL') || die();
-
 class block_telegram_forum_edit_form extends block_edit_form {
 
     protected function specific_definition($mform) {
