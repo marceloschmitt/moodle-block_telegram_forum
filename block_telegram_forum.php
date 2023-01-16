@@ -15,7 +15,7 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Classes to enforce the various access rules that can apply to a activity.
+ * Telegram Forum class.
  *
  * @package    block_telegram_forum
  * @copyright  2021 Marcelo Augusto Rauh Schmitt
