@@ -19,8 +19,7 @@
  *
  * Long description for class (if any)...
  *
- * @package    mod_telegram_forum
- * @category   blocks
+ * @package    block_telegram_forum
  * @copyright  2022 Marcelo Schmitt
  * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
@@ -29,7 +28,7 @@ class block_telegram_forum_observer {
     /**
      * Event processor - user created
      *
-     * @param \core\event\user_created $event
+     * @param \core\event\discussion_created $event
      * @return bool
      */
     public static function discussion_created(\mod_forum\event\discussion_created $event) {
