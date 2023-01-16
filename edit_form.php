@@ -22,8 +22,20 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  **/
 
+namespace block_telegram_forum\privacy;
+
+/**
+ * Form for editing telegram_forum block instances.
+ *
+ * @package    block_telegram_forum
+ * @copyright  2022 Marcelo Schmitt
+ * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ **/
 class block_telegram_forum_edit_form extends block_edit_form {
 
+    /**
+     * Method to implement specific configurations.
+     **/
     protected function specific_definition($mform) {
         global $DB, $COURSE;
 
