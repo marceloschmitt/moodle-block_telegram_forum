@@ -15,14 +15,6 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Classes to enforce the various access rules that can apply to a activity.
- *
- * @package    block_telegram_forum
- * @copyright  2021 Marcelo Augusto Rauh Schmitt
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- **/
-
-/**
  * Observer Class.
  *
  * Long description for class (if any)...
@@ -65,6 +57,9 @@ class block_telegram_forum_observer {
     
     /**
      * Event when post is created
+     *
+     * @param \core\event\post_created $event
+     * @return bool
      */
     public static function post_created(\mod_forum\event\post_created $event) {
         global $DB, $CFG;
@@ -91,6 +86,11 @@ class block_telegram_forum_observer {
 
     /**
      * Method to send the message
+     *
+     * @param string $bottoken - Token of telegram
+     * @param string $channelid - Channel Id of telegram
+     * @param string $text - Text to be sent
+     * @return bool
      */
     public static function send_telegram_message($bottoken, $channelid, $text) {
         global $DB;
