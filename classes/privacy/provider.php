@@ -29,12 +29,11 @@ namespace block_telegram_forum\privacy;
  *
  * Long description for class (if any)...
  *
- * @package    mod_telegram_forum
- * @category   blocks
+ * @package    block_telegram_forum
+ * @category   block
  * @copyright  2022 Marcelo Schmitt
  * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
-
 class provider implements
     // This plugin does not store any personal user data.
     \core_privacy\local\metadata\null_provider {
