@@ -35,9 +35,9 @@ class block_telegram_forum_edit_form extends block_edit_form {
 
     /**
      * Method to implement specific configurations.
-     * 
+     *
      * @param struct $mform Content of fullfilled form
-     **/
+     */
     protected function specific_definition($mform) {
         global $DB, $COURSE;
 
