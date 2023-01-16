@@ -22,7 +22,18 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  **/
 
+/**
+ * Observer Class.
+ *
+ * Long description for class (if any)...
+ *
+ * @package    mod_telegram_forum
+ * @category   blocks
+ * @copyright  2022 Marcelo Schmitt
+ * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
 class block_telegram_forum_observer {
+    
     /**
      * Event processor - user created
      *
@@ -51,7 +62,10 @@ class block_telegram_forum_observer {
         }
     }
 
-
+    
+    /**
+     * Event when post is created
+     */
     public static function post_created(\mod_forum\event\post_created $event) {
         global $DB, $CFG;
         $context = context_course::instance($event->courseid);
@@ -75,6 +89,9 @@ class block_telegram_forum_observer {
     }
 
 
+    /**
+     * Method to send the message
+     */
     public static function send_telegram_message($bottoken, $channelid, $text) {
         global $DB;
         $website = "https://api.telegram.org/bot".$bottoken;
