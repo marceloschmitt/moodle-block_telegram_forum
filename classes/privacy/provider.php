@@ -14,7 +14,19 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
+
 namespace block_calendar_month\privacy;
+
+/**
+ * Provider Class.
+ *
+ * Long description for class (if any)...
+ *
+ * @package    mod_telegram_forum
+ * @category   blocks
+ * @copyright  2022 Marcelo Schmitt
+ * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ */
 
 class provider implements
     // This plugin does not store any personal user data.
