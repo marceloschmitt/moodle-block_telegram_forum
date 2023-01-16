@@ -14,6 +14,13 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
+/**
+ * Classes to enforce the various access rules that can apply to a activity.
+ *
+ * @package    block_telegram_forum
+ * @copyright  2021 Marcelo Augusto Rauh Schmitt
+ * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
+ **/
 
 namespace block_calendar_month\privacy;
 
