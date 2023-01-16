@@ -21,14 +21,18 @@
  * @copyright  2021 Marcelo Augusto Rauh Schmitt
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  **/
-
-
 class block_telegram_forum extends block_base {
 
+    /**
+     * init Method
+     **/
     public function init() {
         $this->title = get_string('telegram_forum', 'block_telegram_forum');
     }
 
+    /**
+     * getContent Method
+     **/
     public function get_content() {
         if ($this->content !== null) {
             return $this->content;
@@ -44,6 +48,9 @@ class block_telegram_forum extends block_base {
     }
 
 
+    /**
+     * hasConfig Method
+     **/
     public function has_config() {
         return true;
     }
