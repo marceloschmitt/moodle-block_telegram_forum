@@ -17,9 +17,8 @@
 /**
  * Email Signup Notification Plugin
  *
- * @package    local_notifyemailsignup
- * @author     Iñaki Arenaza
- * @copyright  2017 Iñaki Arenaza
+ * @package    block_telegram_forum
+ * @copyright  2022 Marcelo Schmitt
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
 
