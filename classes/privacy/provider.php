@@ -15,14 +15,14 @@
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
 /**
- * Classes to enforce the various access rules that can apply to a activity.
+ * Privacy Subsystem implementation for block_badges.
  *
  * @package    block_telegram_forum
  * @copyright  2021 Marcelo Augusto Rauh Schmitt
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  **/
 
-namespace block_calendar_month\privacy;
+namespace block_telegram_forum\privacy;
 
 /**
  * Provider Class.
