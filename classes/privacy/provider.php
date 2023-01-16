@@ -14,13 +14,6 @@
 // You should have received a copy of the GNU General Public License
 // along with Moodle.  If not, see <http://www.gnu.org/licenses/>.
 
-/**
- * Privacy Subsystem implementation for block_badges.
- *
- * @package    block_telegram_forum
- * @copyright  2021 Marcelo Augusto Rauh Schmitt
- * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
- **/
 
 namespace block_telegram_forum\privacy;
 
@@ -30,7 +23,6 @@ namespace block_telegram_forum\privacy;
  * Long description for class (if any)...
  *
  * @package    block_telegram_forum
- * @category   block
  * @copyright  2022 Marcelo Schmitt
  * @license    https://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  */
