@@ -25,9 +25,8 @@
 $string['pluginname'] = 'Telegram and Forum Integration';
 $string['telegram_forum'] = 'Telegram/Forum';
 $string['telegram_forum:addinstance'] = 'Add block Telegram/Forum';
-$string['telegram_forum:myaddinstance'] = 'Addd block Telegram/Forum into My Moodle page';
-
 $string['botconfig'] = 'Bot Name';
+$string['telegram_forum:myaddinstance'] = 'Addd block Telegram/Forum into My Moodle page';
 $string['channelid'] = 'Channel id';
 $string['channellink'] = 'Channel link';
 $string['channelname'] = 'Channel name';
@@ -42,8 +41,7 @@ $string['instructions'] = '1. Create a private channel in Telegram;  <BR>
 $string['instructionstitle'] = 'Instructions';
 $string['message'] = 'Send new messages';
 $string['notconfigured'] = 'Channel not configured! Activate edit and configure the block.';
+$string['privacy:metadata'] = 'The Telegram/Forum block only sends messagens to yourconfigured Telegram Channel.';
 $string['register'] = 'Register in the course Telegram channel.';
 $string['tokenconfig'] = 'Bot Token';
 $string['topic'] = 'Send new topics';
-
-$string['privacy:metadata'] = 'The Telegram/Forum block only sends messagens to yourconfigured Telegram Channel.';
