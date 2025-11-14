@@ -26,59 +26,103 @@
 class block_telegram_forum_observer {
 
     /**
-     * Event processor - user created
+     * Get block configuration from instance.
      *
-     * @param \core\event\discussion_created $event
+     * @param object $instance Block instance record
+     * @return object|null Block configuration object
+     */
+    private static function get_block_config($instance) {
+        if (empty($instance->configdata)) {
+            return new stdClass();
+        }
+        $config = unserialize(base64_decode($instance->configdata));
+        if ($config === false) {
+            return new stdClass();
+        }
+        return $config;
+    }
+
+    /**
+     * Event processor - discussion created
+     *
+     * @param \mod_forum\event\discussion_created $event
      * @return bool
      */
     public static function discussion_created(\mod_forum\event\discussion_created $event) {
-        global $DB, $CFG;
+        global $DB;
         $context = context_course::instance($event->courseid);
         $instance = $DB->get_record('block_instances',
                         array('parentcontextid' => $context->id, 'blockname' => 'telegram_forum'));
         if (!$instance) {
             return true;
-        } else {
-            $blockname = 'telegram_forum';
-            $block = block_instance($blockname, $instance);
-            if (!isset($block->config->forum[$event->contextinstanceid])) {
-                return true;
-            }
-            $bottoken = get_config('block_telegram_forum', 'token');
-            $discussion = $DB->get_record($event->objecttable, ['id' => $event->objectid]);
-            $post = $DB->get_record('forum_posts', ['discussion' => $discussion->id]);
-            $text = $post->subject . PHP_EOL . strip_tags($post->message);
-            self::send_telegram_message($bottoken, $block->config->channelid, $text);
+        }
+        
+        $config = self::get_block_config($instance);
+        if (!isset($config->forum[$event->contextinstanceid])) {
             return true;
         }
+        
+        if (empty($config->channelid)) {
+            return true;
+        }
+        
+        $bottoken = get_config('block_telegram_forum', 'token');
+        if (empty($bottoken)) {
+            return true;
+        }
+        
+        $discussion = $DB->get_record($event->objecttable, ['id' => $event->objectid]);
+        if (!$discussion) {
+            return true;
+        }
+        
+        $post = $DB->get_record('forum_posts', ['discussion' => $discussion->id, 'parent' => 0]);
+        if (!$post) {
+            return true;
+        }
+        
+        $text = $post->subject . PHP_EOL . strip_tags($post->message);
+        self::send_telegram_message($bottoken, $config->channelid, $text);
+        return true;
     }
 
     /**
      * Event when post is created
      *
-     * @param \core\event\post_created $event
+     * @param \mod_forum\event\post_created $event
      * @return bool
      */
     public static function post_created(\mod_forum\event\post_created $event) {
-        global $DB, $CFG;
+        global $DB;
         $context = context_course::instance($event->courseid);
         $instance = $DB->get_record('block_instances',
                         array('parentcontextid' => $context->id, 'blockname' => 'telegram_forum'));
         if (!$instance) {
             return true;
-        } else {
-            $blockname = 'telegram_forum';
-            $block = block_instance($blockname, $instance);
-            if (!isset($block->config->forummessage[$event->contextinstanceid])) {
-                    return true;
-            }
-            $bottoken = get_config('block_telegram_forum', 'token');
-            $discussion = $DB->get_record($event->objecttable, ['id' => $event->objectid]);
-            $post = $DB->get_record('forum_posts', ['id' => $discussion->id]);
-            $text = $post->subject . PHP_EOL . strip_tags($post->message);
-            self::send_telegram_message($bottoken, $block->config->channelid, $text);
+        }
+        
+        $config = self::get_block_config($instance);
+        if (!isset($config->forummessage[$event->contextinstanceid])) {
             return true;
         }
+        
+        if (empty($config->channelid)) {
+            return true;
+        }
+        
+        $bottoken = get_config('block_telegram_forum', 'token');
+        if (empty($bottoken)) {
+            return true;
+        }
+        
+        $post = $DB->get_record('forum_posts', ['id' => $event->objectid]);
+        if (!$post) {
+            return true;
+        }
+        
+        $text = $post->subject . PHP_EOL . strip_tags($post->message);
+        self::send_telegram_message($bottoken, $config->channelid, $text);
+        return true;
     }
 
 
@@ -91,15 +135,18 @@ class block_telegram_forum_observer {
      * @return bool
      */
     public static function send_telegram_message($bottoken, $channelid, $text) {
-        global $DB;
-        $website = "https://api.telegram.org/bot".$bottoken;
+        if (empty($bottoken) || empty($channelid) || empty($text)) {
+            return false;
+        }
+        
+        $website = "https://api.telegram.org/bot" . $bottoken;
         $params = [
             'chat_id' => $channelid,
             'text' => $text,
         ];
-        $curl = new curl();
+        $curl = new \curl();
         $url = $website . '/sendMessage';
-        $result = $curl->get($url, $params);
+        $result = $curl->post($url, $params);
         return true;
     }
 

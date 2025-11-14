@@ -53,11 +53,13 @@ class block_telegram_forum_edit_form extends block_edit_form {
 
         $mform->addElement('static', 'description', get_string('forums', 'block_telegram_forum'));
 
-        $foruns = $DB->get_records('forum', ['course' => $COURSE->id], $sort = 'name', $fields = 'id, name');
-        $groupid = 0;
+        $foruns = $DB->get_records('forum', ['course' => $COURSE->id], 'name', 'id, name');
         foreach ($foruns as $forum) {
+            $module = $DB->get_record('course_modules', ['instance' => $forum->id, 'course' => $COURSE->id], 'id');
+            if (!$module) {
+                continue;
+            }
             $checkarray = array();
-            $module = $DB->get_record('course_modules', ['instance' => $forum->id, 'course' => $COURSE->id], $fields = 'id');
             $checkarray[] =& $mform->createElement('checkbox', "config_forum[$module->id]", null,
                 get_string('topic', 'block_telegram_forum'));
             $checkarray[] =& $mform->createElement('checkbox', "config_forummessage[$module->id]", null,
