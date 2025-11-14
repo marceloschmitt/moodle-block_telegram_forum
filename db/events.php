@@ -24,13 +24,13 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$observers = array(
-    array(
+$observers = [
+    [
         'eventname' => '\mod_forum\event\discussion_created',
         'callback' => 'block_telegram_forum_observer::discussion_created',
-    ),
-    array(
+    ],
+    [
         'eventname' => '\mod_forum\event\post_created',
         'callback' => 'block_telegram_forum_observer::post_created',
-    ),
-);
+    ],
+];

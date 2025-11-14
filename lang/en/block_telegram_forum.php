@@ -27,25 +27,23 @@ $string['telegram_forum'] = 'Telegram/Forum';
 $string['telegram_forum:addinstance'] = 'Add block Telegram/Forum';
 $string['telegram_forum:myaddinstance'] = 'Addd block Telegram/Forum into My Moodle page';
 
-$string['headerconfig'] = 'Telegram/Forum block configuration';
-$string['descconfig'] = 'In order to use Telegram to send new topics in courses it is necessary to configure the token and the name of the Telegram bot used by the organization.';
-$string['tokenconfig'] = 'Bot Token';
 $string['botconfig'] = 'Bot Name';
-
 $string['channelid'] = 'Channel id';
 $string['channellink'] = 'Channel link';
 $string['channelname'] = 'Channel name';
+$string['descconfig'] = 'In order to use Telegram to send new topics in courses it is necessary to configure the token and the name of the Telegram bot used by the organization.';
 $string['forums'] = 'Select forums';
-$string['topic'] = 'Send new topics';
-$string['message'] = 'Send new messages';
-
-$string['notconfigured'] = 'Channel not configured! Activate edit and configure the block.';
-$string['register'] = 'Register in the course Telegram channel.';
+$string['headerconfig'] = 'Telegram/Forum block configuration';
 $string['instructions'] = '1. Create a private channel in Telegram;  <BR>
                            2. Add {$a} as administrator of the channel; <BR>
                            3. Discover and copy the channel id; <BR>
                            4. Paste the channel id in the proper field; <BR>
                            5. Fill the channel link used for subscription.';
 $string['instructionstitle'] = 'Instructions';
+$string['message'] = 'Send new messages';
+$string['notconfigured'] = 'Channel not configured! Activate edit and configure the block.';
+$string['register'] = 'Register in the course Telegram channel.';
+$string['tokenconfig'] = 'Bot Token';
+$string['topic'] = 'Send new topics';
 
 $string['privacy:metadata'] = 'The Telegram/Forum block only sends messagens to yourconfigured Telegram Channel.';
