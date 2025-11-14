@@ -22,11 +22,7 @@
  * @license    http://www.gnu.org/copyleft/gpl.html GNU GPL v3 or later
  **/
 
-$string['pluginname'] = 'Telegram and Forum Integration';
-$string['telegram_forum'] = 'Telegram/Forum';
-$string['telegram_forum:addinstance'] = 'Add block Telegram/Forum';
 $string['botconfig'] = 'Bot Name';
-$string['telegram_forum:myaddinstance'] = 'Addd block Telegram/Forum into My Moodle page';
 $string['channelid'] = 'Channel id';
 $string['channellink'] = 'Channel link';
 $string['channelname'] = 'Channel name';
@@ -41,7 +37,11 @@ $string['instructions'] = '1. Create a private channel in Telegram;  <BR>
 $string['instructionstitle'] = 'Instructions';
 $string['message'] = 'Send new messages';
 $string['notconfigured'] = 'Channel not configured! Activate edit and configure the block.';
+$string['pluginname'] = 'Telegram and Forum Integration';
 $string['privacy:metadata'] = 'The Telegram/Forum block only sends messagens to yourconfigured Telegram Channel.';
 $string['register'] = 'Register in the course Telegram channel.';
+$string['telegram_forum'] = 'Telegram/Forum';
+$string['telegram_forum:addinstance'] = 'Add block Telegram/Forum';
+$string['telegram_forum:myaddinstance'] = 'Addd block Telegram/Forum into My Moodle page';
 $string['tokenconfig'] = 'Bot Token';
 $string['topic'] = 'Send new topics';

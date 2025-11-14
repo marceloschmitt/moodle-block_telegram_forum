@@ -24,11 +24,7 @@
 
 defined('MOODLE_INTERNAL') || die();
 
-$string['pluginname'] = 'Integração Telegram Fórum';
-$string['telegram_forum'] = 'Telegram/Fórum';
-$string['telegram_forum:addinstance'] = 'Adiciona bloco telegram_forum';
 $string['botconfig'] = 'Bot da instituição';
-$string['telegram_forum:myaddinstance'] = 'Adiciona bloco telegram_forum para My Moodle page';
 $string['channelid'] = 'Id do canal';
 $string['channellink'] = 'Link para o canal';
 $string['channelname'] = 'Nome do canal';
@@ -43,7 +39,11 @@ $string['instructions'] = '1. Crie um canal no seu telegram;  <BR>
 $string['instructionstitle'] = 'Instruções';
 $string['message'] = 'Envia novas mensagens';
 $string['notconfigured'] = 'Canal não configurado! Ative a edição da disciplina e configure este bloco.';
+$string['pluginname'] = 'Integração Telegram Fórum';
 $string['privacy:metadata'] = 'The Calendar block only displays existing calendar data.';
 $string['register'] = 'Registre-se no canal Telegram desta página';
+$string['telegram_forum'] = 'Telegram/Fórum';
+$string['telegram_forum:addinstance'] = 'Adiciona bloco telegram_forum';
+$string['telegram_forum:myaddinstance'] = 'Adiciona bloco telegram_forum para My Moodle page';
 $string['tokenconfig'] = 'Token';
 $string['topic'] = 'Envia novos tópicos';
