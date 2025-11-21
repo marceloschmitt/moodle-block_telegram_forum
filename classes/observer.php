@@ -81,7 +81,17 @@ class block_telegram_forum_observer {
             return true;
         }
 
-        $text = $post->subject . PHP_EOL . strip_tags($post->message);
+        $user = $DB->get_record('user', ['id' => $post->userid], 'firstname, lastname');
+        $authorname = '';
+        if ($user) {
+            $authorname = trim($user->firstname . ' ' . $user->lastname);
+        }
+
+        $text = '';
+        if (!empty($authorname)) {
+            $text = $authorname . PHP_EOL . PHP_EOL;
+        }
+        $text .= $post->subject . PHP_EOL . strip_tags($post->message);
         self::send_telegram_message($bottoken, $config->channelid, $text);
         return true;
     }
@@ -120,7 +130,17 @@ class block_telegram_forum_observer {
             return true;
         }
 
-        $text = $post->subject . PHP_EOL . strip_tags($post->message);
+        $user = $DB->get_record('user', ['id' => $post->userid], 'firstname, lastname');
+        $authorname = '';
+        if ($user) {
+            $authorname = trim($user->firstname . ' ' . $user->lastname);
+        }
+
+        $text = '';
+        if (!empty($authorname)) {
+            $text = $authorname . PHP_EOL . PHP_EOL;
+        }
+        $text .= $post->subject . PHP_EOL . strip_tags($post->message);
         self::send_telegram_message($bottoken, $config->channelid, $text);
         return true;
     }
