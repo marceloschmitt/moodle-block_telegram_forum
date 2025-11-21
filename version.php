@@ -25,7 +25,7 @@
 defined('MOODLE_INTERNAL') || die();
 
 $plugin->component = 'block_telegram_forum';  // Recommended since 2.0.2 (MDL-26035). Required since 3.0 (MDL-48494).
-$plugin->version = 2025111401;  // YYYYMMDDHH (year, month, day, 24-hr time).
+$plugin->version = 2025112101;  // YYYYMMDDHH (year, month, day, 24-hr time).
 $plugin->requires = 2025041400;  // Moodle 5.0.
 $plugin->maturity = MATURITY_STABLE;
 $plugin->release = 'v5.0';
